@@ -7,8 +7,8 @@ namespace ShakerSort
 {
     public partial class MainForm : Form
     {
-        double[] mass;//Массив значений
-        int count;//Длина массива
+        double[] globalMass;//Массив значений
+        int countGlobMas;//Длина массива
         Dictionary<int,int> chart = new Dictionary<int, int>(); //Словарь полученных данных
         TextBox[] tm;
         public MainForm()
@@ -18,7 +18,7 @@ namespace ShakerSort
         /// <summary>
         /// Шейкер-сортировка
         /// </summary>
-        private void shekerSort()
+        private void shekerSort(double[] mass, int count)
         {
             Stopwatch stopWatch = new Stopwatch();//Таймер, замеряющий время выполнения сортировки 
             stopWatch.Start(); //Запуск таймера
@@ -63,7 +63,7 @@ namespace ShakerSort
             string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:000}",
                 ts.Hours, ts.Minutes, ts.Seconds,
                 ts.Milliseconds);
-            textBoxTime.Text = elapsedTime;//Вывод в textBox
+            textBoxTime.Text +=count+" - " +elapsedTime+"\n";//Вывод в textBox
 
             //Перевожу время с таймера в миллисекунды
             int milisec = ts.Seconds * 1000 + ts.Milliseconds;
@@ -80,9 +80,9 @@ namespace ShakerSort
         /// </summary>
         private void AddChangeToForm() 
         {
-            for (int i = 0; i < count; i++)
+            for (int i = 0; i < countGlobMas; i++)
             {
-                tm[i].Text = mass[i].ToString();
+                tm[i].Text = globalMass[i].ToString();
             }
         }
 
@@ -96,19 +96,21 @@ namespace ShakerSort
             try
             {
                 panelMas.Controls.Clear();
-                count = int.Parse(textBoxCount.Text);//Длина массива
-                mass = new double[count];
-                tm = new TextBox[count];
+                countGlobMas = int.Parse(textBoxCount.Text);//Длина массива
+                globalMass = new double[countGlobMas];
+                tm = new TextBox[countGlobMas];
                 int width = panelMas.Width / 25;//Ширина одного textBox
                 int height = panelMas.Height;//Высота одного textBox
-                for (int j = 0; j < count; j++)
+                for (int j = 0; j < countGlobMas; j++)
                 {
-                    tm[j] = new TextBox();
-                    tm[j].Multiline = true;
-                    tm[j].Width = width;
-                    tm[j].Height = height;
-                    tm[j].Left = j * width;//Положение по горизонтали
-                    tm[j].Tag = j;
+                    tm[j] = new TextBox
+                    {
+                        Multiline = true,
+                        Width = width,
+                        Height = height,
+                        Left = j * width,//Положение по горизонтали
+                        Tag = j
+                    };
                     tm[j].TextChanged += tchanged;
                     tm[j].KeyPress += textBoxKeyPress;
                     panelMas.Controls.Add(tm[j]);//Добавление textBox на панель
@@ -121,18 +123,49 @@ namespace ShakerSort
             }
             
         }
-
-        private void buttonSort_Click(object sender, EventArgs e)
+        private void buttonSortAll_Click(object sender, EventArgs e)
         {
-            textBoxCount.Clear();//Очищаю текстбокс с числом элементов для последующего использования
-            shekerSort();
+            textBoxTime.Text = "";
+            shekerSort(globalMass, countGlobMas);
             var sortedDict = new SortedDictionary<int, int>(chart);
             chartTimeFromCount.Series["Время"].Points.Clear();
             foreach (var item in sortedDict)
             {
                 chartTimeFromCount.Series["Время"].Points.AddXY(item.Key, item.Value);
-                
+
             }
+
+        }
+        private void buttonSort_Click(object sender, EventArgs e)
+        {
+            textBoxCount.Clear();//Очищаю текстбокс с числом элементов для последующего использования
+            int t = 0;
+            textBoxTime.Text="";
+            for (int i = 0; i < 50; i++)
+            {
+                int n = countGlobMas / 100 * (i + 1);
+                if (t + n <= countGlobMas)
+                {
+                    double[] mas = new double[n];
+
+                    for (int j = t; j < t + n; j++)
+                    {
+                        mas[j - t] = globalMass[j];
+                    }
+                    shekerSort(mas, n);
+                    var sortedDict = new SortedDictionary<int, int>(chart);
+                    chartTimeFromCount.Series["Время"].Points.Clear();
+                    foreach (var item in sortedDict)
+                    {
+                        chartTimeFromCount.Series["Время"].Points.AddXY(item.Key, item.Value);
+
+                    }
+                    t += n;
+                }
+                else break;
+            
+            }
+            
         }
 
         /// <summary>
@@ -143,7 +176,7 @@ namespace ShakerSort
         private void buttonRandom_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
-            for (int i = 0; i < count; i++)
+            for (int i = 0; i < countGlobMas; i++)
             {
                 tm[i].Text = rnd.Next(-1000, 1000).ToString();
             }
@@ -157,12 +190,14 @@ namespace ShakerSort
         private void textBoxKeyPress(object sender, KeyPressEventArgs e)
         {
             char number = e.KeyChar;
-            if (!Char.IsDigit(number))
+            if (!Char.IsDigit(number) && number != 8) // цифры и клавиша BackSpace
+            {
                 e.Handled = true;
+            }
         }
 
         /// <summary>
-        /// Функция, отвечающая за изменение содержимого массива на основе содержимого каждого из текстбоксов на панели
+        /// Функция, изменяющая содержимое массива на основе текстбоксов на панели
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -170,7 +205,7 @@ namespace ShakerSort
         {
             TextBox t = (TextBox)sender;
             int a = Convert.ToInt32(t.Tag.ToString());//По тегу обращаюсь к созданному TextBox
-            mass[a] = double.Parse(t.Text);
+            globalMass[a] = double.Parse(t.Text);
 
         }
     }

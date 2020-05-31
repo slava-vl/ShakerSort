@@ -34,7 +34,7 @@
             this.textBoxCount = new System.Windows.Forms.TextBox();
             this.panelMas = new System.Windows.Forms.Panel();
             this.buttonCount = new System.Windows.Forms.Button();
-            this.buttonSort = new System.Windows.Forms.Button();
+            this.buttonSortAllMass = new System.Windows.Forms.Button();
             this.textBoxTime = new System.Windows.Forms.TextBox();
             this.buttonRandom = new System.Windows.Forms.Button();
             this.chartTimeFromCount = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -42,6 +42,7 @@
             this.labelChart = new System.Windows.Forms.Label();
             this.labelRandom = new System.Windows.Forms.Label();
             this.labelCount = new System.Windows.Forms.Label();
+            this.buttonSortParts = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chartTimeFromCount)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,7 +60,7 @@
             this.panelMas.AutoScroll = true;
             this.panelMas.Location = new System.Drawing.Point(13, 118);
             this.panelMas.Name = "panelMas";
-            this.panelMas.Size = new System.Drawing.Size(748, 90);
+            this.panelMas.Size = new System.Drawing.Size(843, 90);
             this.panelMas.TabIndex = 1;
             // 
             // buttonCount
@@ -72,23 +73,24 @@
             this.buttonCount.UseVisualStyleBackColor = true;
             this.buttonCount.Click += new System.EventHandler(this.buttonCount_Click);
             // 
-            // buttonSort
+            // buttonSortAllMass
             // 
-            this.buttonSort.Location = new System.Drawing.Point(13, 245);
-            this.buttonSort.Name = "buttonSort";
-            this.buttonSort.Size = new System.Drawing.Size(275, 53);
-            this.buttonSort.TabIndex = 3;
-            this.buttonSort.Text = "Сортировать";
-            this.buttonSort.UseVisualStyleBackColor = true;
-            this.buttonSort.Click += new System.EventHandler(this.buttonSort_Click);
+            this.buttonSortAllMass.Location = new System.Drawing.Point(13, 245);
+            this.buttonSortAllMass.Name = "buttonSortAllMass";
+            this.buttonSortAllMass.Size = new System.Drawing.Size(349, 53);
+            this.buttonSortAllMass.TabIndex = 3;
+            this.buttonSortAllMass.Text = "Сортировать весь массив";
+            this.buttonSortAllMass.UseVisualStyleBackColor = true;
+            this.buttonSortAllMass.Click += new System.EventHandler(this.buttonSortAll_Click);
             // 
             // textBoxTime
             // 
             this.textBoxTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxTime.Location = new System.Drawing.Point(12, 376);
+            this.textBoxTime.Location = new System.Drawing.Point(13, 425);
             this.textBoxTime.Multiline = true;
             this.textBoxTime.Name = "textBoxTime";
-            this.textBoxTime.Size = new System.Drawing.Size(276, 107);
+            this.textBoxTime.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBoxTime.Size = new System.Drawing.Size(349, 107);
             this.textBoxTime.TabIndex = 4;
             // 
             // buttonRandom
@@ -107,7 +109,7 @@
             this.chartTimeFromCount.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chartTimeFromCount.Legends.Add(legend1);
-            this.chartTimeFromCount.Location = new System.Drawing.Point(320, 273);
+            this.chartTimeFromCount.Location = new System.Drawing.Point(368, 273);
             this.chartTimeFromCount.Name = "chartTimeFromCount";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
@@ -115,7 +117,7 @@
             series1.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
             series1.Name = "Время";
             this.chartTimeFromCount.Series.Add(series1);
-            this.chartTimeFromCount.Size = new System.Drawing.Size(441, 210);
+            this.chartTimeFromCount.Size = new System.Drawing.Size(488, 210);
             this.chartTimeFromCount.TabIndex = 6;
             this.chartTimeFromCount.Text = "chart1";
             // 
@@ -123,7 +125,7 @@
             // 
             this.labelTime.AutoSize = true;
             this.labelTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelTime.Location = new System.Drawing.Point(10, 355);
+            this.labelTime.Location = new System.Drawing.Point(10, 392);
             this.labelTime.Name = "labelTime";
             this.labelTime.Size = new System.Drawing.Size(259, 18);
             this.labelTime.TabIndex = 7;
@@ -133,7 +135,7 @@
             // 
             this.labelChart.AutoSize = true;
             this.labelChart.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelChart.Location = new System.Drawing.Point(317, 245);
+            this.labelChart.Location = new System.Drawing.Point(365, 245);
             this.labelChart.Name = "labelChart";
             this.labelChart.Size = new System.Drawing.Size(397, 18);
             this.labelChart.TabIndex = 8;
@@ -159,11 +161,22 @@
             this.labelCount.TabIndex = 10;
             this.labelCount.Text = "Введите количество элементов в массиве";
             // 
+            // buttonSortParts
+            // 
+            this.buttonSortParts.Location = new System.Drawing.Point(12, 315);
+            this.buttonSortParts.Name = "buttonSortParts";
+            this.buttonSortParts.Size = new System.Drawing.Size(350, 53);
+            this.buttonSortParts.TabIndex = 11;
+            this.buttonSortParts.Text = "Сортировать, деля по частям";
+            this.buttonSortParts.UseVisualStyleBackColor = true;
+            this.buttonSortParts.Click += new System.EventHandler(this.buttonSort_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(777, 557);
+            this.ClientSize = new System.Drawing.Size(868, 557);
+            this.Controls.Add(this.buttonSortParts);
             this.Controls.Add(this.labelCount);
             this.Controls.Add(this.labelRandom);
             this.Controls.Add(this.labelChart);
@@ -171,7 +184,7 @@
             this.Controls.Add(this.chartTimeFromCount);
             this.Controls.Add(this.buttonRandom);
             this.Controls.Add(this.textBoxTime);
-            this.Controls.Add(this.buttonSort);
+            this.Controls.Add(this.buttonSortAllMass);
             this.Controls.Add(this.buttonCount);
             this.Controls.Add(this.panelMas);
             this.Controls.Add(this.textBoxCount);
@@ -188,7 +201,7 @@
         private System.Windows.Forms.TextBox textBoxCount;
         private System.Windows.Forms.Panel panelMas;
         private System.Windows.Forms.Button buttonCount;
-        private System.Windows.Forms.Button buttonSort;
+        private System.Windows.Forms.Button buttonSortAllMass;
         private System.Windows.Forms.TextBox textBoxTime;
         private System.Windows.Forms.Button buttonRandom;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartTimeFromCount;
@@ -196,6 +209,7 @@
         private System.Windows.Forms.Label labelChart;
         private System.Windows.Forms.Label labelRandom;
         private System.Windows.Forms.Label labelCount;
+        private System.Windows.Forms.Button buttonSortParts;
     }
 }
 
