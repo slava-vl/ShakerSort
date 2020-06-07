@@ -60,7 +60,6 @@ namespace ShakerSort
             string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:000}",
                 ts.Hours, ts.Minutes, ts.Seconds,
                 ts.Milliseconds);
-            textBoxTime.Text = elapsedTime;//Вывод в textBox
 
             //Перевожу время с таймера в миллисекунды
             int milisec = ts.Seconds * 1000 + ts.Milliseconds;

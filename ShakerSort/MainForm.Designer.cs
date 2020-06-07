@@ -36,7 +36,6 @@
             this.chartTimeFromCount = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.labelChart = new System.Windows.Forms.Label();
             this.labelCount = new System.Windows.Forms.Label();
-            this.buttonSortParts = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chartTimeFromCount)).BeginInit();
             this.SuspendLayout();
             // 
@@ -97,22 +96,11 @@
             this.labelCount.TabIndex = 10;
             this.labelCount.Text = "Введите n, где n - число, до которого замеряется время работы сортировки";
             // 
-            // buttonSortParts
-            // 
-            this.buttonSortParts.Location = new System.Drawing.Point(12, 315);
-            this.buttonSortParts.Name = "buttonSortParts";
-            this.buttonSortParts.Size = new System.Drawing.Size(350, 53);
-            this.buttonSortParts.TabIndex = 11;
-            this.buttonSortParts.Text = "Сортировать, деля по частям";
-            this.buttonSortParts.UseVisualStyleBackColor = true;
-            this.buttonSortParts.Click += new System.EventHandler(this.buttonSort_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(868, 557);
-            this.Controls.Add(this.buttonSortParts);
             this.Controls.Add(this.labelCount);
             this.Controls.Add(this.labelChart);
             this.Controls.Add(this.chartTimeFromCount);
@@ -133,7 +121,6 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chartTimeFromCount;
         private System.Windows.Forms.Label labelChart;
         private System.Windows.Forms.Label labelCount;
-        private System.Windows.Forms.Button buttonSortParts;
     }
 }
 
