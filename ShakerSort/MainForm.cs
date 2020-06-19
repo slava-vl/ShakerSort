@@ -9,7 +9,7 @@ namespace ShakerSort
     public partial class MainForm : Form
     {
         int countGlob;//Длина массива
-        Dictionary<int,int> realChart = new Dictionary<int, int>(); //Словарь полученных данных
+        Dictionary<int,int> realChart = new Dictionary<int, int> (); //Словарь полученных данных
         int[] nums;
         public MainForm()
         {
@@ -18,18 +18,48 @@ namespace ShakerSort
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            realChart.Add(100, 0);
+            realChart.Add(200, 0);
+            realChart.Add(500, 1);
+            realChart.Add(1000, 5);
+            realChart.Add(2000, 20);
+            realChart.Add(3000, 44);
+            realChart.Add(4000, 78);
+            realChart.Add(5000, 116);
+            realChart.Add(6000, 176); 
+            realChart.Add(7000, 236);
+            realChart.Add(8000, 301);
+            realChart.Add(9000, 388);
+            realChart.Add(10000, 466);
+            realChart.Add(11000, 571);
+            realChart.Add(12000, 706);
+            realChart.Add(13000, 832);
+            realChart.Add(14000, 916);
+            realChart.Add(15000, 1096);
+            realChart.Add(16000, 1222);
+            realChart.Add(17000, 1349);
+            realChart.Add(18000, 1556);
+            realChart.Add(19000, 1752);
+            realChart.Add(20000, 2012);
             TeoreticChartFill();
             RealChartFill();
         }
         private void RealChartFill()
         {
-
+            var sortedDict = new SortedDictionary<int, int>(realChart);
+            chartRealTime.Series["Время"].Points.Clear();
+            foreach (var item in sortedDict) 
+            {
+                chartRealTime.Series["Время"].Points.AddXY(item.Key, item.Value);
+            }
         }
 
         private void TeoreticChartFill()
         {
+
             for (int i = 0; i < 10000; i+=100)
             {
+                chartTeoreticTime.Series["Время"].Points.AddXY(i, i*i);
             }
         }
 
@@ -86,9 +116,9 @@ namespace ShakerSort
             int milisec = ts.Seconds * 1000 + ts.Milliseconds;
 
             //Добавляю полученные данные в словарь
-            if (!chart.ContainsKey(countGlob))
-                chart.Add(countGlob, milisec);
-            else chart[countGlob] = milisec;
+            if (!realChart.ContainsKey(countGlob))
+                realChart.Add(countGlob, milisec);
+            else realChart[countGlob] = milisec;
         }
 
         /// <summary>
@@ -112,6 +142,7 @@ namespace ShakerSort
             TransformToIntMass();
             shakerSort();
             AddNumsToTextBoxAfterSort();
+            RealChartFill();
         }
 
         private void AddNumsToTextBoxAfterSort()

@@ -31,6 +31,9 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.textBoxCount = new System.Windows.Forms.TextBox();
             this.buttonRandom = new System.Windows.Forms.Button();
             this.chartTeoreticTime = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -42,8 +45,10 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.импортИзФайлаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.chartRealTime = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.chartTeoreticTime)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartRealTime)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxCount
@@ -156,11 +161,30 @@
             this.panel1.Size = new System.Drawing.Size(10, 601);
             this.panel1.TabIndex = 14;
             // 
+            // chartRealTime
+            // 
+            chartArea2.Name = "ChartArea1";
+            this.chartRealTime.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chartRealTime.Legends.Add(legend2);
+            this.chartRealTime.Location = new System.Drawing.Point(1023, 335);
+            this.chartRealTime.Name = "chartRealTime";
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series2.Legend = "Legend1";
+            series2.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
+            series2.Name = "Время";
+            this.chartRealTime.Series.Add(series2);
+            this.chartRealTime.Size = new System.Drawing.Size(438, 210);
+            this.chartRealTime.TabIndex = 15;
+            this.chartRealTime.Text = "chart1";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1490, 557);
+            this.Controls.Add(this.chartRealTime);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.textBoxAfterSort);
             this.Controls.Add(this.buttonSort);
@@ -178,6 +202,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chartTeoreticTime)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartRealTime)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -196,6 +221,7 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem импортИзФайлаToolStripMenuItem;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartRealTime;
     }
 }
 
