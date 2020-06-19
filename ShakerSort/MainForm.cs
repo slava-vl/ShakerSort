@@ -162,8 +162,10 @@ namespace ShakerSort
         private void buttonRandom_Click(object sender, EventArgs e)
         {
             textBoxNums.Clear();
-            countGlob = int.Parse(textBoxCount.Text);
             Random rd = new Random();
+            textBoxCount.Text = rd.Next(100,20000).ToString();
+            countGlob = int.Parse(textBoxCount.Text);
+            
             string s="";
             for (int i = 0; i < countGlob; i++)
             {
