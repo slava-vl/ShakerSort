@@ -9,19 +9,28 @@ namespace ShakerSort
     public partial class MainForm : Form
     {
         int countGlob;//Длина массива
-        Dictionary<int,int> chart = new Dictionary<int, int>(); //Словарь полученных данных
+        Dictionary<int,int> realChart = new Dictionary<int, int>(); //Словарь полученных данных
         int[] nums;
         public MainForm()
         {
-
             InitializeComponent();
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
             TeoreticChartFill();
             RealChartFill();
+        }
+        private void RealChartFill()
+        {
+
         }
 
         private void TeoreticChartFill()
         {
-
+            for (int i = 0; i < 10000; i+=100)
+            {
+            }
         }
 
         /// <summary>
@@ -161,5 +170,6 @@ namespace ShakerSort
                 }
             }
         }
+
     }
 }
