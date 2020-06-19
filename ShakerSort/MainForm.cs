@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Windows.Forms;
 
 namespace ShakerSort
@@ -9,19 +10,29 @@ namespace ShakerSort
     {
         int countGlob;//Длина массива
         Dictionary<int,int> chart = new Dictionary<int, int>(); //Словарь полученных данных
+        int[] nums;
         public MainForm()
         {
+
             InitializeComponent();
+            TeoreticChartFill();
+            RealChartFill();
         }
+
+        private void TeoreticChartFill()
+        {
+
+        }
+
         /// <summary>
         /// Шейкер-сортировка
         /// </summary>
-        private void shekerSort(int count, int[] mass)
+        private void shakerSort()
         {
             Stopwatch stopWatch = new Stopwatch();//Таймер, замеряющий время выполнения сортировки 
             stopWatch.Start(); //Запуск таймера
 
-            int left = 0, right = count - 1; // левая и правая границы сортируемой области массива
+            int left = 0, right = countGlob - 1; // левая и правая границы сортируемой области массива
             int flag = 1;  // флаг наличия перемещений
             int t;// вспомогательная переменная
             // Цикл выполняется пока левая граница не сомкнётся с правой и пока в массиве имеются перемещения
@@ -30,11 +41,11 @@ namespace ShakerSort
                 flag = 0;
                 for (int i = left; i < right; i++)  //двигаемся слева направо
                 {
-                    if (mass[i] > mass[i + 1])
+                    if (nums[i] > nums[i + 1])
                     {
-                        t = mass[i];
-                        mass[i] = mass[i + 1];
-                        mass[i + 1] = t;
+                        t = nums[i];
+                        nums[i] = nums[i + 1];
+                        nums[i + 1] = t;
                         flag = 1;
                     }
                 }
@@ -42,11 +53,11 @@ namespace ShakerSort
                 
                 for (int i = right; i > left; i--)  //двигаемся справа налево
                 {
-                    if (mass[i - 1] > mass[i])
+                    if (nums[i - 1] > nums[i])
                     {
-                        t = mass[i];
-                        mass[i] = mass[i - 1];
-                        mass[i - 1] = t;
+                        t = nums[i];
+                        nums[i] = nums[i - 1];
+                        nums[i - 1] = t;
                         flag = 1;
                     }
                 }
@@ -60,54 +71,94 @@ namespace ShakerSort
             string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:000}",
                 ts.Hours, ts.Minutes, ts.Seconds,
                 ts.Milliseconds);
+            textBoxTime.Text = elapsedTime;
 
             //Перевожу время с таймера в миллисекунды
             int milisec = ts.Seconds * 1000 + ts.Milliseconds;
 
             //Добавляю полученные данные в словарь
-            if (!chart.ContainsKey(count))
-                chart.Add(count, milisec);
-            else chart[count] = milisec;
+            if (!chart.ContainsKey(countGlob))
+                chart.Add(countGlob, milisec);
+            else chart[countGlob] = milisec;
         }
 
         /// <summary>
-        /// Создание массива TextBox-ов на панели
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void buttonCount_Click(object sender, EventArgs e)
-        {
-            countGlob = int.Parse(textBoxCount.Text);//Длина массива
-            for (int i = 1; i < countGlob; i+= countGlob/10)
-            {
-                int[] mass = new int[i];
-                Random rnd = new Random();
-                for (int j = 0; j < mass.Length; j++)
-                {
-                    mass[j] = rnd.Next(-1000, 1000);
-                }
-                shekerSort(mass.Length, mass);
-                var sortedDict = new SortedDictionary<int, int>(chart);
-                chartTimeFromCount.Series["Время"].Points.Clear();
-                foreach (var item in sortedDict)
-                {
-                    chartTimeFromCount.Series["Время"].Points.AddXY(item.Key, item.Value);
-
-                }
-            }
-            
-        }
-        /// <summary>
-        /// Запрет на нажатие любых клавишь, кроме цифр
+        /// Запрет на нажатие любых клавишь, кроме цифр, backspace, пробела
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void textBoxKeyPress(object sender, KeyPressEventArgs e)
         {
             char number = e.KeyChar;
-            if ((e.KeyChar <= 47 || e.KeyChar >= 58) && number != 8 && number != 44) //цифры, клавиша BackSpace и запятая а ASCII
+            if ((e.KeyChar <= 47 || e.KeyChar >= 58) && number != 8 && number != 44 && number != 32) //цифры, клавиша BackSpace и запятая а ASCII
             {
                 e.Handled = true;
+            }
+        }
+
+        private void buttonSort_Click(object sender, EventArgs e)
+        {
+
+            countGlob = int.Parse(textBoxCount.Text);
+            TransformToIntMass();
+            shakerSort();
+            AddNumsToTextBoxAfterSort();
+        }
+
+        private void AddNumsToTextBoxAfterSort()
+        {
+            textBoxAfterSort.Clear();
+            string s="";
+            for (int i = 0; i < countGlob; i++)
+            {
+                s += nums[i] + " ";
+            }
+            textBoxAfterSort.Text = s;
+        }
+
+        private void TransformToIntMass()
+        {
+            nums = new int[countGlob];
+            string[] textmas = textBoxNums.Text.Split();
+            for (int i = 0; i < countGlob; i++)
+            {
+                nums[i] = int.Parse(textmas[i]);
+            }
+        }
+
+        /// <summary>
+        /// Заполнение textBoxNums случайными числами
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonRandom_Click(object sender, EventArgs e)
+        {
+            textBoxNums.Clear();
+            countGlob = int.Parse(textBoxCount.Text);
+            Random rd = new Random();
+            string s="";
+            for (int i = 0; i < countGlob; i++)
+            {
+                 s+= rd.Next(int.MinValue, int.MaxValue) +" ";
+
+            }
+            textBoxNums.Text = s;
+        }
+
+        private void ImportFromFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var excelOpen = new OpenFileDialog
+            {
+                Filter = "|*.txt"
+            };
+            if (excelOpen.ShowDialog() == DialogResult.OK)
+            {
+                using (StreamReader sr = new StreamReader(excelOpen.FileName))
+                {
+
+                    textBoxCount.Text = sr.ReadLine();
+                    textBoxNums.Text = sr.ReadToEnd();
+                }
             }
         }
     }
