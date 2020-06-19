@@ -31,9 +31,10 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.textBoxCount = new System.Windows.Forms.TextBox();
             this.buttonRandom = new System.Windows.Forms.Button();
             this.chartTeoreticTime = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -46,6 +47,7 @@
             this.импортИзФайлаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.chartRealTime = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chartTeoreticTime)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartRealTime)).BeginInit();
@@ -76,15 +78,21 @@
             this.chartTeoreticTime.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chartTeoreticTime.Legends.Add(legend1);
-            this.chartTeoreticTime.Location = new System.Drawing.Point(1023, 80);
+            this.chartTeoreticTime.Location = new System.Drawing.Point(989, 80);
             this.chartTeoreticTime.Name = "chartTeoreticTime";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series1.Legend = "Legend1";
-            series1.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-            series1.Name = "Время";
+            series1.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Diamond;
+            series1.Name = "Лучший случай(O(n))";
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series2.Legend = "Legend1";
+            series2.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
+            series2.Name = "Средний случай(O(n^2))";
             this.chartTeoreticTime.Series.Add(series1);
-            this.chartTeoreticTime.Size = new System.Drawing.Size(438, 210);
+            this.chartTeoreticTime.Series.Add(series2);
+            this.chartTeoreticTime.Size = new System.Drawing.Size(472, 210);
             this.chartTeoreticTime.TabIndex = 6;
             this.chartTeoreticTime.Text = "chart1";
             // 
@@ -92,11 +100,11 @@
             // 
             this.labelChart.AutoSize = true;
             this.labelChart.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelChart.Location = new System.Drawing.Point(1020, 47);
+            this.labelChart.Location = new System.Drawing.Point(989, 42);
             this.labelChart.Name = "labelChart";
-            this.labelChart.Size = new System.Drawing.Size(397, 18);
+            this.labelChart.Size = new System.Drawing.Size(268, 18);
             this.labelChart.TabIndex = 8;
-            this.labelChart.Text = "Зависимость времени от количества элементов:";
+            this.labelChart.Text = "Теоретическое время алгоритма";
             // 
             // textBoxNums
             // 
@@ -167,23 +175,34 @@
             this.chartRealTime.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
             this.chartRealTime.Legends.Add(legend2);
-            this.chartRealTime.Location = new System.Drawing.Point(1023, 335);
+            this.chartRealTime.Location = new System.Drawing.Point(989, 335);
             this.chartRealTime.Name = "chartRealTime";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series2.Legend = "Legend1";
-            series2.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-            series2.Name = "Время";
-            this.chartRealTime.Series.Add(series2);
-            this.chartRealTime.Size = new System.Drawing.Size(438, 210);
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series3.Legend = "Legend1";
+            series3.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
+            series3.Name = "Время";
+            this.chartRealTime.Series.Add(series3);
+            this.chartRealTime.Size = new System.Drawing.Size(472, 210);
             this.chartRealTime.TabIndex = 15;
             this.chartRealTime.Text = "chart1";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(989, 308);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(225, 18);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "Реальное время алгоритма";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1490, 557);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.chartRealTime);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.textBoxAfterSort);
@@ -222,6 +241,7 @@
         private System.Windows.Forms.ToolStripMenuItem импортИзФайлаToolStripMenuItem;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartRealTime;
+        private System.Windows.Forms.Label label1;
     }
 }
 

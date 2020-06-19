@@ -18,9 +18,6 @@ namespace ShakerSort
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            realChart.Add(100, 0);
-            realChart.Add(200, 0);
-            realChart.Add(500, 1);
             realChart.Add(1000, 5);
             realChart.Add(2000, 20);
             realChart.Add(3000, 44);
@@ -31,16 +28,6 @@ namespace ShakerSort
             realChart.Add(8000, 301);
             realChart.Add(9000, 388);
             realChart.Add(10000, 466);
-            realChart.Add(11000, 571);
-            realChart.Add(12000, 706);
-            realChart.Add(13000, 832);
-            realChart.Add(14000, 916);
-            realChart.Add(15000, 1096);
-            realChart.Add(16000, 1222);
-            realChart.Add(17000, 1349);
-            realChart.Add(18000, 1556);
-            realChart.Add(19000, 1752);
-            realChart.Add(20000, 2012);
             TeoreticChartFill();
             RealChartFill();
         }
@@ -57,9 +44,10 @@ namespace ShakerSort
         private void TeoreticChartFill()
         {
 
-            for (int i = 0; i < 10000; i+=100)
+            for (int i = 0; i <= 10; i+=1)
             {
-                chartTeoreticTime.Series["Время"].Points.AddXY(i, i*i);
+                chartTeoreticTime.Series["Средний случай(O(n^2))"].Points.AddXY(i, i*i);
+                chartTeoreticTime.Series["Лучший случай(O(n))"].Points.AddXY(i, i);
             }
         }
 
