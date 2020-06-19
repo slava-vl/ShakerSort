@@ -9,7 +9,8 @@ namespace ShakerSort
     public partial class MainForm : Form
     {
         int countGlob;//Длина массива
-        Dictionary<int,int> realChart = new Dictionary<int, int> (); //Словарь полученных данных
+        Dictionary<int,int> realChart = new Dictionary<int, int> { {1000,5}, { 2000, 20 }, { 3000, 44 }, { 4000, 78 },
+            {5000, 116}, {6000, 176}, {7000, 236}, {8000, 301}, {9000, 388}, {10000, 466} }; //Словарь полученных данных
         int[] nums;
         public MainForm()
         {
@@ -18,16 +19,6 @@ namespace ShakerSort
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            realChart.Add(1000, 5);
-            realChart.Add(2000, 20);
-            realChart.Add(3000, 44);
-            realChart.Add(4000, 78);
-            realChart.Add(5000, 116);
-            realChart.Add(6000, 176); 
-            realChart.Add(7000, 236);
-            realChart.Add(8000, 301);
-            realChart.Add(9000, 388);
-            realChart.Add(10000, 466);
             TeoreticChartFill();
             RealChartFill();
         }
