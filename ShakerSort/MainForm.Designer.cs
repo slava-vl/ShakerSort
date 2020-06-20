@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.textBoxCount = new System.Windows.Forms.TextBox();
             this.buttonRandom = new System.Windows.Forms.Button();
             this.chartTeoreticTime = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -49,6 +49,10 @@
             this.chartRealTime = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chartTeoreticTime)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartRealTime)).BeginInit();
@@ -56,7 +60,7 @@
             // 
             // textBoxCount
             // 
-            this.textBoxCount.Location = new System.Drawing.Point(23, 39);
+            this.textBoxCount.Location = new System.Drawing.Point(22, 52);
             this.textBoxCount.Multiline = true;
             this.textBoxCount.Name = "textBoxCount";
             this.textBoxCount.Size = new System.Drawing.Size(234, 51);
@@ -65,7 +69,7 @@
             // 
             // buttonRandom
             // 
-            this.buttonRandom.Location = new System.Drawing.Point(839, 39);
+            this.buttonRandom.Location = new System.Drawing.Point(838, 52);
             this.buttonRandom.Name = "buttonRandom";
             this.buttonRandom.Size = new System.Drawing.Size(98, 51);
             this.buttonRandom.TabIndex = 2;
@@ -75,24 +79,24 @@
             // 
             // chartTeoreticTime
             // 
-            chartArea5.Name = "ChartArea1";
-            this.chartTeoreticTime.ChartAreas.Add(chartArea5);
-            legend5.Name = "Legend1";
-            this.chartTeoreticTime.Legends.Add(legend5);
+            chartArea1.Name = "ChartArea1";
+            this.chartTeoreticTime.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartTeoreticTime.Legends.Add(legend1);
             this.chartTeoreticTime.Location = new System.Drawing.Point(989, 80);
             this.chartTeoreticTime.Name = "chartTeoreticTime";
-            series7.ChartArea = "ChartArea1";
-            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series7.Legend = "Legend1";
-            series7.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Diamond;
-            series7.Name = "Лучший случай(O(n))";
-            series8.ChartArea = "ChartArea1";
-            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series8.Legend = "Legend1";
-            series8.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-            series8.Name = "Средний случай(O(n^2))";
-            this.chartTeoreticTime.Series.Add(series7);
-            this.chartTeoreticTime.Series.Add(series8);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.Legend = "Legend1";
+            series1.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Diamond;
+            series1.Name = "Лучший случай(O(n))";
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series2.Legend = "Legend1";
+            series2.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
+            series2.Name = "Средний случай(O(n^2))";
+            this.chartTeoreticTime.Series.Add(series1);
+            this.chartTeoreticTime.Series.Add(series2);
             this.chartTeoreticTime.Size = new System.Drawing.Size(472, 210);
             this.chartTeoreticTime.TabIndex = 6;
             this.chartTeoreticTime.Text = "chart1";
@@ -109,7 +113,7 @@
             // 
             // textBoxNums
             // 
-            this.textBoxNums.Location = new System.Drawing.Point(23, 96);
+            this.textBoxNums.Location = new System.Drawing.Point(22, 142);
             this.textBoxNums.Multiline = true;
             this.textBoxNums.Name = "textBoxNums";
             this.textBoxNums.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -119,18 +123,18 @@
             // 
             // textBoxTime
             // 
-            this.textBoxTime.Location = new System.Drawing.Point(194, 239);
+            this.textBoxTime.Location = new System.Drawing.Point(685, 305);
             this.textBoxTime.Multiline = true;
             this.textBoxTime.Name = "textBoxTime";
             this.textBoxTime.ReadOnly = true;
-            this.textBoxTime.Size = new System.Drawing.Size(234, 51);
+            this.textBoxTime.Size = new System.Drawing.Size(251, 51);
             this.textBoxTime.TabIndex = 10;
             // 
             // buttonSort
             // 
-            this.buttonSort.Location = new System.Drawing.Point(98, 239);
+            this.buttonSort.Location = new System.Drawing.Point(22, 265);
             this.buttonSort.Name = "buttonSort";
-            this.buttonSort.Size = new System.Drawing.Size(72, 51);
+            this.buttonSort.Size = new System.Drawing.Size(262, 51);
             this.buttonSort.TabIndex = 11;
             this.buttonSort.Text = "Sort";
             this.buttonSort.UseVisualStyleBackColor = true;
@@ -138,7 +142,7 @@
             // 
             // textBoxAfterSort
             // 
-            this.textBoxAfterSort.Location = new System.Drawing.Point(23, 309);
+            this.textBoxAfterSort.Location = new System.Drawing.Point(22, 375);
             this.textBoxAfterSort.Multiline = true;
             this.textBoxAfterSort.Name = "textBoxAfterSort";
             this.textBoxAfterSort.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -172,18 +176,18 @@
             // 
             // chartRealTime
             // 
-            chartArea6.Name = "ChartArea1";
-            this.chartRealTime.ChartAreas.Add(chartArea6);
-            legend6.Name = "Legend1";
-            this.chartRealTime.Legends.Add(legend6);
+            chartArea2.Name = "ChartArea1";
+            this.chartRealTime.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chartRealTime.Legends.Add(legend2);
             this.chartRealTime.Location = new System.Drawing.Point(989, 335);
             this.chartRealTime.Name = "chartRealTime";
-            series9.ChartArea = "ChartArea1";
-            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series9.Legend = "Legend1";
-            series9.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-            series9.Name = "Время";
-            this.chartRealTime.Series.Add(series9);
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series3.Legend = "Legend1";
+            series3.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
+            series3.Name = "Время";
+            this.chartRealTime.Series.Add(series3);
             this.chartRealTime.Size = new System.Drawing.Size(472, 210);
             this.chartRealTime.TabIndex = 15;
             this.chartRealTime.Text = "chart1";
@@ -202,17 +206,61 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(263, 54);
+            this.label2.Location = new System.Drawing.Point(262, 67);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(449, 18);
             this.label2.TabIndex = 17;
             this.label2.Text = "Введите данные или нажмите на случайное заполнение";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(19, 31);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(192, 18);
+            this.label3.TabIndex = 18;
+            this.label3.Text = "Количество элементов";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(19, 121);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(149, 18);
+            this.label4.TabIndex = 19;
+            this.label4.Text = "Исходный массив";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.Location = new System.Drawing.Point(682, 284);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(254, 18);
+            this.label5.TabIndex = 20;
+            this.label5.Text = "Время выполнения сортировки";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label6.Location = new System.Drawing.Point(19, 354);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(212, 18);
+            this.label6.TabIndex = 21;
+            this.label6.Text = "Отсортированный массив";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1490, 557);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.chartRealTime);
@@ -255,6 +303,10 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chartRealTime;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }
 
