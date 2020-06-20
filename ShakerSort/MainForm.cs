@@ -100,20 +100,6 @@ namespace ShakerSort
             else realChart[countGlob] = milisec;
         }
 
-        /// <summary>
-        /// Запрет на нажатие любых клавишь, кроме цифр, backspace, пробела
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void textBoxKeyPress(object sender, KeyPressEventArgs e)
-        {
-            char number = e.KeyChar;
-            if ((e.KeyChar <= 47 || e.KeyChar >= 58) && number != 8 && number != 44 && number != 32) //цифры, клавиша BackSpace и запятая а ASCII
-            {
-                e.Handled = true;
-            }
-        }
-
         private void buttonSort_Click(object sender, EventArgs e)
         {
 
@@ -180,6 +166,20 @@ namespace ShakerSort
                     textBoxCount.Text = sr.ReadLine();
                     textBoxNums.Text = sr.ReadToEnd();
                 }
+            }
+        }
+
+        /// <summary>
+        /// Запрет на нажатие любых клавишь, кроме цифр, backspace, пробела
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void textBoxKeyPress(object sender, KeyPressEventArgs e)
+        {
+            char number = e.KeyChar;
+            if ((e.KeyChar <= 47 || e.KeyChar >= 58) && number != 8 && number != 44 && number != 32) //цифры, клавиша BackSpace и запятая а ASCII
+            {
+                e.Handled = true;
             }
         }
 
